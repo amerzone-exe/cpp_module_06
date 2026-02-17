@@ -6,7 +6,7 @@
 /*   By: jocelyn <jocelyn@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 14:06:14 by amerzone          #+#    #+#             */
-/*   Updated: 2026/02/16 12:38:48 by jocelyn          ###   ########.fr       */
+/*   Updated: 2026/02/17 11:18:53 by jocelyn          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,17 @@
 #include <cmath>
 #include <cstdlib>
 #include <iostream>
-
-#define FLT_MAX 3.40282347e+38f
-#define FLT_MIN 1.17549435e-38f
+#include <climits>
+#include <cfloat>
 
 ScalarConverter::ScalarConverter()
 {
 	std::cout << "Default constructor called" << std::endl;
 }
+
 ScalarConverter::ScalarConverter( ScalarConverter const & src )
 {
 	(void)src;
-}
-
-ScalarConverter & ScalarConverter::operator=( ScalarConverter const & rightSide ) 
-{
-	(void)rightSide;
-	return *this;
 }
 
 ScalarConverter::~ScalarConverter()
@@ -47,7 +41,7 @@ void	printImpossible()
 bool isPseudoLiteral( std::string str)
 {
 	std::string temp = str;
-	if(str == "-inf" || str == "+inf" || str == "nan")
+	if(str == "-inf" || str == "+inf" || str == "inf" || str == "nan")
 	{
 		printImpossible();
 		std::cout << "float: " << temp + "f" << std::endl;
@@ -65,6 +59,60 @@ bool isPseudoLiteral( std::string str)
 		return false;
 }
 
+bool	isString(std::string str)
+{
+	int i = 0;
+
+	if(std::isalpha(str[i]) && str[i + 1])
+		return true;
+	else
+		return false;
+}
+
+void	printChar( double val )
+{
+	if (val > 127 && val < 32)
+	{
+		std::cout << "char: non printable" << std::endl;
+		return ;
+	}
+	char	s_char = static_cast<char>(val);
+	std::cout << "char: " << s_char << std::endl;
+}
+
+void	printInt( double val )
+{	
+	if(val > INT_MAX || val < INT_MIN)
+	{
+		std::cout << "int: non printable" << std::endl;
+		return ;
+	}
+	int		s_int = static_cast<int>(val);
+	std::cout << "int: " << s_int << std::endl;
+}
+
+void	printFloat( double val )
+{
+	float	s_float = static_cast<float>(val);
+	if(val > FLT_MAX || val < -FLT_MAX)
+	{
+		std::cout << "float: " << s_float << std::endl;
+		return ;
+	}
+	if((val - std::floor(val)) == 0)
+		std::cout << "float: " << s_float << ".0f" << std::endl;
+	else
+		std::cout << "float: " << s_float << "f" << std::endl;
+}
+
+void	printDouble( double val )
+{
+	if((val - std::floor(val)) == 0)
+		std::cout << "double: " << val << ".0" << std::endl;
+	else
+		std::cout << "double: " << val << std::endl;		
+}
+
 void	ScalarConverter::convert( std::string const & str )
 {
 	if(str.empty())
@@ -74,23 +122,15 @@ void	ScalarConverter::convert( std::string const & str )
 	}
 	if(isPseudoLiteral(str))
 		return ;
+	if(isString(str))
+	{
+		std::cout << "Can't convert a string" << std::endl;
+		return ;
+	}
+
 	double	s_double = std::strtod(str.c_str(), NULL);
-	float	s_float = static_cast<float>(s_double);
-	int		s_int = static_cast<int>(s_double);
-	char	s_char = static_cast<char>(s_double);
-	if (s_char < 32)
-		std::cout << "char: non printable" << std::endl;
-	else
-		std::cout << "char: " << s_char << std::endl;
-	std::cout << "int: " << s_int << std::endl;
-	if((s_double - std::floor(s_double)) == 0)
-	{
-		std::cout << "float: " << s_float << ".0f" << std::endl;
-		std::cout << "double: " << s_double << ".0" << std::endl;
-	}
-	else
-	{
-		std::cout << "float: " << s_float << "f" << std::endl;
-		std::cout << "double: " << s_double << std::endl;		
-	}
+	printChar(s_double);
+	printInt(s_double);
+	printFloat(s_double);
+	printDouble(s_double);
 }

@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jocelyn <jocelyn@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/13 13:35:14 by amerzone          #+#    #+#             */
-/*   Updated: 2026/02/17 11:00:05 by jocelyn          ###   ########.fr       */
+/*   Created: 2026/02/17 10:28:03 by jocelyn           #+#    #+#             */
+/*   Updated: 2026/02/17 11:58:24 by jocelyn          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCALARCONVERTER
-# define SCALARCONVERTER
+#include "Serializer.hpp"
+#include <iostream>
 
-# include <string>
-
-class ScalarConverter
+int main( void )
 {
-	public:
-		ScalarConverter();
-		ScalarConverter( ScalarConverter const & src );
-		virtual ScalarConverter & operator=( ScalarConverter const & rightSide ) = 0;
-		~ScalarConverter();
+	Data* a;
 
-		static void	convert( std::string const & str );
-};
-
-#endif
+	a->data_value = 40;
+	// std::cout << "Data* : " << a << std::endl;
+	// std::cout << "uintptr_t : " << Serializer::serialize(a) << std::endl;
+	Serializer::serialize(a);
+	return 0;
+}

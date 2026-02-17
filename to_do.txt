@@ -1,0 +1,1 @@
+Refaire l'ex00: detecter le type et faire le cast en fonction et pas tout mettre en double.
