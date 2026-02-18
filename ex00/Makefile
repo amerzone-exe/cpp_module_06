@@ -9,7 +9,10 @@ INC = inc
 OBJDIR = obj/
 
 SRC =	main.cpp \
-		ScalarConverter.cpp
+		ScalarConverter.cpp \
+		convertType.cpp \
+		detectType.cpp \
+		printType.cpp
 
 OBJ := $(addprefix $(OBJDIR), $(SRC:.cpp=.o))
 DEPS = $(OBJ:.o=.d)
