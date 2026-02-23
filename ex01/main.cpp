@@ -3,23 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jocelyn <jocelyn@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jpiquet <jpiquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 10:28:03 by jocelyn           #+#    #+#             */
-/*   Updated: 2026/02/17 11:58:24 by jocelyn          ###   ########.fr       */
+/*   Updated: 2026/02/23 11:25:55 by jpiquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Serializer.hpp"
+#include "Data.hpp"
 #include <iostream>
 
 int main( void )
 {
-	Data* a;
+	Data* a = new Data;
+	uintptr_t address;
 
 	a->data_value = 40;
-	// std::cout << "Data* : " << a << std::endl;
-	// std::cout << "uintptr_t : " << Serializer::serialize(a) << std::endl;
-	Serializer::serialize(a);
+	std::cout << "Data *a address : " << &a << " | value a->: " << a->data_value << std::endl;
+	
+	/*Serialize*/
+	address = Serializer::serialize(a);
+	std::cout << "uintptr_t value : " << address << std::endl;
+
+	/*Deserialize*/
+	Data* b;
+	b = Serializer::deserialize(address);
+	std::cout << "Data *b address : " << &a << " | value b->: " << b->data_value << std::endl;
+
+	delete a;
+
 	return 0;
 }

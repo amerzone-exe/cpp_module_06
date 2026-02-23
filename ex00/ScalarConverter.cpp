@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jocelyn <jocelyn@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jpiquet <jpiquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 14:06:14 by amerzone          #+#    #+#             */
-/*   Updated: 2026/02/18 11:16:45 by jocelyn          ###   ########.fr       */
+/*   Updated: 2026/02/23 11:36:15 by jpiquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ void	ScalarConverter::convert( std::string const & str )
 		std::cout << "Error: can't convert a string" << std::endl;
 		return ;
 	}
-
 	if(isChar(str))
 		convertChar(str);
 	else if(isInt(str))
@@ -102,4 +101,6 @@ void	ScalarConverter::convert( std::string const & str )
 		convertFloat(str);
 	else if(isDouble(str))
 		convertDouble(str);
+	else
+		std::cout << "Error: unknown type" << std::endl;
 }

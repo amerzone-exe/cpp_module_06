@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jocelyn <jocelyn@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jpiquet <jpiquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 13:35:14 by amerzone          #+#    #+#             */
-/*   Updated: 2026/02/18 11:15:53 by jocelyn          ###   ########.fr       */
+/*   Updated: 2026/02/23 11:32:18 by jpiquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,6 @@
 # include <iostream>
 # include <climits>
 # include <cfloat>
-
-# define ERROR std::cout << "error" << std::endl;
-
-enum type
-{
-	CHAR,
-	INT,
-	FLOAT,
-	DOUBLE
-};
 
 class ScalarConverter
 {

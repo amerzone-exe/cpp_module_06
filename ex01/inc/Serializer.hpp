@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Serializer.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jocelyn <jocelyn@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jpiquet <jpiquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 11:13:25 by jocelyn           #+#    #+#             */
-/*   Updated: 2026/02/17 12:01:08 by jocelyn          ###   ########.fr       */
+/*   Updated: 2026/02/23 11:20:11 by jpiquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,20 @@
 # define SERIALIZER_HPP
 
 #include <stdint.h>
-
-struct Data
-{
-	unsigned int data_value;
-};
+#include "Data.hpp"
 
 class Serializer
 {
 	public:
-	Serializer( void );
-	Serializer( Serializer const & src );
-	virtual Serializer & operator=( Serializer const & rightSide ) = 0;	
-	~Serializer( void );
 
 	static uintptr_t serialize( Data* ptr);
 	static Data* deserialize( uintptr_t raw );
+
+	private:
+	Serializer( void );
+	Serializer( Serializer const & src );
+	Serializer & operator=( Serializer const & rightSide );
+	~Serializer( void );
 };
 
 #endif
