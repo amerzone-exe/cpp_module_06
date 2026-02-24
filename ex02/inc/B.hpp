@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpiquet <jpiquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/23 11:39:08 by jpiquet           #+#    #+#             */
-/*   Updated: 2026/02/23 13:12:18 by jpiquet          ###   ########.fr       */
+/*   Created: 2026/02/24 15:14:15 by jpiquet           #+#    #+#             */
+/*   Updated: 2026/02/24 15:31:32 by jpiquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 #include "Base.hpp"
 
-class B : public Base
-{
-};
+class B : public Base {};
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jpiquet <jpiquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 11:13:25 by jocelyn           #+#    #+#             */
-/*   Updated: 2026/02/23 11:20:11 by jpiquet          ###   ########.fr       */
+/*   Updated: 2026/02/24 15:00:18 by jpiquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,12 @@
 class Serializer
 {
 	public:
-
+	
 	static uintptr_t serialize( Data* ptr);
 	static Data* deserialize( uintptr_t raw );
 
 	private:
+
 	Serializer( void );
 	Serializer( Serializer const & src );
 	Serializer & operator=( Serializer const & rightSide );

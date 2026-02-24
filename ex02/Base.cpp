@@ -6,12 +6,11 @@
 /*   By: jpiquet <jpiquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 11:39:13 by jpiquet           #+#    #+#             */
-/*   Updated: 2026/02/23 13:12:44 by jpiquet          ###   ########.fr       */
+/*   Updated: 2026/02/24 15:09:55 by jpiquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Base.hpp"
-#include <iostream>
 
 Base::~Base( void )
 {
