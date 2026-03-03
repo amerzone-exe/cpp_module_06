@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   convertType.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jocelyn <jocelyn@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jpiquet <jpiquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/18 08:59:37 by jocelyn           #+#    #+#             */
-/*   Updated: 2026/02/18 11:45:15 by jocelyn          ###   ########.fr       */
+/*   Updated: 2026/03/03 16:50:21 by jpiquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 bool	checkLimits( std::string str)
 {
-	long i = std::atol(str.c_str());
+	long i = std::strtol(str.c_str(), NULL, 10);
 	if (i > INT_MAX || i < INT_MIN)
 	{
 		std::cout << "int: impossible" << std::endl;
@@ -34,8 +34,7 @@ void	convertChar( std::string str )
 
 void	convertInt( std::string str )
 {
-
-	long i = std::atol(str.c_str());
+	long i = std::strtol(str.c_str(), NULL, 10);
 	if (i < 32 || i > 127)
 		std::cout << "char: non printable" << std::endl;
 	else
@@ -72,9 +71,4 @@ void	convertDouble( std::string str )
 		std::cout << "int: " << static_cast<int>(d) << std::endl;
 	printFloat(static_cast<float>(d));
 	printDouble(d);
-	// if(d > FLT_MAX || d < -FLT_MAX)
-	// {
-	// 	std::cout << "float: " << d << std::endl;
-	// 	return ;
-	// }
 }

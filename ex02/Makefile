@@ -1,6 +1,6 @@
 NAME = Identify
 
-CC = c++
+CXX = c++
 
 FLAGS = -Wall -Wextra -Werror -MMD -std=c++98
 
@@ -17,11 +17,11 @@ DEPS = $(OBJ:.o=.d)
 all : $(NAME)
 
 $(NAME) : $(OBJ)
-	$(CC) $(FLAGS) -I $(INC) -o $(NAME) $(OBJ)
+	$(CXX) $(FLAGS) -I $(INC) -o $(NAME) $(OBJ)
 
 $(OBJDIR)%.o : %.cpp | $(OBJDIR)
 	@mkdir -p $(dir $@)
-	$(CC) $(FLAGS) -I $(INC) -o $@ -c $<
+	$(CXX) $(FLAGS) -I $(INC) -o $@ -c $<
 
 $(OBJDIR):
 	@mkdir -p $(OBJDIR)
